@@ -1,9 +1,11 @@
 import React from 'react';
 import './List.scss';
 
+
+
 const List = (props) => {
     return(
-        <ul className="list">
+        <ul onClick={props.onClick} className="list">
             {
                 props.items.map((item, index) => (
                     <li key={index} className={item.active ? 'active' : ''}>
