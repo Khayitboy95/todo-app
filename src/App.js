@@ -17,21 +17,10 @@ const App = () => {
   }
 
   useEffect(() => {
-    axios.get('http://localhost:3003/lists').then(response => {
-      // setLists(response.data);
-       const len = response.data.length;
-       const newArr = [];
-       let newObj = {};
-       for(let i=1;i<=len;i++){
-        axios.get('http://localhost:3003/lists/'+i+'?_expand=color').then(response => {
-          newArr.push(response.data);
-        })
-       }
-       newObj = newArr;
-       setLists(newObj);
-
-       
+    axios.get('http://localhost:3003/lists?_expand=color&_embed=tasks').then(response => {
+       setLists(response.data); 
     });
+    
     axios.get('http://localhost:3003/colors').then(response => {
       setColors(response.data);
     });
@@ -54,8 +43,9 @@ const App = () => {
         {lists ? (
           <List
             items={lists}
-            onRemove={list => {
-              console.log(list);
+            onRemove={id => {
+              const newLists = lists.filter(item=>item.id !== id);
+              setLists(newLists);
             }}
             isRemovable
           />
@@ -66,7 +56,7 @@ const App = () => {
         <AddList onAdd={onAddList} colors={colors}  />
       </div>
       <div className="todo__tasks">
-        <Tasks />
+        {lists && <Tasks list={lists[1]} />}
       </div>
     </div>
   )

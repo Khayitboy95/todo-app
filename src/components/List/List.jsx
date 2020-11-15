@@ -1,12 +1,16 @@
 import React from 'react';
 import './List.scss';
 
+
 import removeSvg from './../../assets/img/remove.svg';
+import axios from 'axios';
 
 const List = (props) => {
     const removeList = (item) => {
         if(window.confirm('Вы действительно хотите удалить список?')){
-          props.onRemove(item);
+            axios.delete('http://localhost:3003/lists/'+item.id).then(() => {
+                props.onRemove(item.id);
+            });
         }
     }
 
