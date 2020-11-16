@@ -33,8 +33,8 @@ const AddList = (props) => {
         }
         setIsLoading(true);
         axios.post('http://localhost:3003/lists',{name: inputValue, colorid:selectedColor}).then(response => {
-            const color = props.colors.find(color => color.id === selectedColor).name;
-            const listObj = {...response.data, color: { name:color}};
+            const color = props.colors.find(color => color.id === selectedColor);
+            const listObj = {...response.data, color, tasks:[]};
             props.onAdd(listObj);   
             onClose();
             setIsLoading(false);

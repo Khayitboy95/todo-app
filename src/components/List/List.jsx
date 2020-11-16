@@ -1,7 +1,6 @@
 import React from 'react';
 import './List.scss';
 
-
 import removeSvg from './../../assets/img/remove.svg';
 import axios from 'axios';
 
