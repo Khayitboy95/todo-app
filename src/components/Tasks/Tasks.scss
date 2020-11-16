@@ -85,6 +85,12 @@
       align-items: center;
       margin-bottom: 15px;
 
+      input{
+        margin-left: 15px;
+        border: none;
+        flex-grow: 1;
+      }
+
       &:hover &-actions {
         opacity: 1;
       }

@@ -38,6 +38,8 @@ const AddList = (props) => {
             props.onAdd(listObj);   
             onClose();
             setIsLoading(false);
+        }).catch(() => {
+            alert('Ошибка при добавлении списка');
         });
     }
     return (

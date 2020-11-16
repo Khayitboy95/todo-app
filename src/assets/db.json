@@ -14,11 +14,6 @@
       "id": 3,
       "name": "Фильмы и сериалы",
       "colorId": 3
-    },
-    {
-      "name": "Спорт",
-      "colorId": 3,
-      "id": 6
     }
   ],
   "tasks": [
@@ -81,6 +76,21 @@
       "text": "222",
       "completed": true,
       "id": 12
+    },
+    {
+      "id": 13
+    },
+    {
+      "listId": 3,
+      "text": "qwerty",
+      "completed": false,
+      "id": 14
+    },
+    {
+      "listId": 3,
+      "text": "dada",
+      "completed": false,
+      "id": 15
     }
   ],
   "colors": [

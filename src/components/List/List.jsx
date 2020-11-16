@@ -13,14 +13,16 @@ const List = (props) => {
             });
         }
     }
-
     return(
         <ul onClick={props.onClick} className="list">
             {
                 props.items.map((item, index) => (
-                    <li key={index} className={item.active ? 'active' : ''}>
+                    <li onClick={props.onClickItem ? () => {props.onClickItem(item)} : null } key={index} className={item.active ? 'active' : props.activeItem && props.activeItem.id === item.id ? 'active' : ''}>
                         <i>{item.icon ? item.icon : <i className={`badge badge--${item.color.name}`}></i>}</i>
-                        <span>{item.name}</span>
+                        <span>
+                            {item.name}
+                            {item.tasks && ` (${item.tasks.length}) `}    
+                        </span>
                         {props.isRemovable && <img onClick={() => {removeList(item)}} className="list__remove-icon" src={removeSvg} alt="remove icon"/>}
                     </li> 
                 ))
